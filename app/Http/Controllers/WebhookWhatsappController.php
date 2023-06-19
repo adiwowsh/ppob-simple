@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Helpers;
 use App\Services\Whatsapp\WhatsappService;
 use Illuminate\Http\Request;
 

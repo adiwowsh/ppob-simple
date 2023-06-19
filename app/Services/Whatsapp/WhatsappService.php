@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\WebhookWhatsappReceiveMsg;
 use App\Repository\User\UserRepository;
 use App\Repository\WebHookWhatsapp\WebHookWhatsappRepository;
-use App\Services\Helpers;
 use App\Services\Midtrans\MidtransService;
 use App\Services\Phone\PhoneService;
 use Psy\Exception\ErrorException;
@@ -34,19 +33,19 @@ class WhatsappService{
             return $this->_help($data);
         }
 
-        if($helpers->containsWord('pulsa', strtolower($data->text))){
+        if(containsWord('pulsa', strtolower($data->text))){
             return $this->_default($data);
         }
 
-        if($helpers->containsWord('pln', strtolower($data->text))){
+        if(containsWord('pln', strtolower($data->text))){
             return $this->_default($data);
         }
 
-        if($helpers->containsWord('plnbill', strtolower($data->text))){
+        if(containsWord('plnbill', strtolower($data->text))){
             return $this->_default($data);
         }
 
-        if($helpers->containsWord(strtolower("REG"), $data->text) AND $helpers->containsWord(env('PRIVATE_PIN'), $data->text)){
+        if(containsWord(strtolower("REG"), $data->text) AND containsWord(env('PRIVATE_PIN'), $data->text)){
             // REGISTER USER HERE
             // Example format
             // REG#083833833988#rorobawa@gmail.com#Ari Tumiwa#Sumbawa#PIN
@@ -134,7 +133,7 @@ Untuk info pembelian dan topup saldo Hub.
 
         }
 
-        if($helpers->containsWord('UPDATE', strtolower($data->text)) AND $helpers->containsWord(env('PRIVATE_PIN'), $data->text)){
+        if(containsWord('UPDATE', strtolower($data->text)) AND containsWord(env('PRIVATE_PIN'), $data->text)){
             // UPDATE PIN/PASS USER HERE
             // Example format
             // UPDATE#083833833988#ADMIN_PIN
@@ -182,7 +181,7 @@ Untuk info pembelian dan topup saldo Hub.
             ];
         }
 
-        if($helpers->containsWord('topup', strtolower($data->text))){
+        if(containsWord('topup', strtolower($data->text))){
             $explodedTxt = $this->_explodeText($data->text);
             if(!$explodedTxt){
                 // error
@@ -321,7 +320,7 @@ untuk info command yang dapat kami kerjakan"
 
     private function _explodeText($string){
         $helpers = new Helpers();
-        if(!$helpers->containsWord("#", $string)){
+        if(!containsWord("#", $string)){
             return false;
         }
 
