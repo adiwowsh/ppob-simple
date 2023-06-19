@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Support\ServiceProvider;
-
 class Helpers
 {
     public function containsWord($string, $words)
