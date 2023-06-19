@@ -137,7 +137,6 @@ return [
     'providers' => [
 
 
-        App\Services\Helpers::class,
         /*
          * Laravel Framework Service Providers...
          */
@@ -176,6 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Services\Helpers::class,
 
     ],
 
