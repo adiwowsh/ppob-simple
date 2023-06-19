@@ -318,7 +318,6 @@ untuk info command yang dapat kami kerjakan"
     }
 
     private function _explodeText($string){
-        $helpers = new Helpers();
         if(!containsWord("#", $string)){
             return false;
         }
