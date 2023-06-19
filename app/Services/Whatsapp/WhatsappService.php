@@ -16,7 +16,6 @@ use GuzzleHttp\Client;
 
 class WhatsappService{
     public function start($payload){
-        $helpers = new Helpers();
         $phoneValidate = new PhoneService();
         $userRepo = new UserRepository();
         $midtrans = new MidtransService();
