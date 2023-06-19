@@ -40,9 +40,4 @@ class Helpers
         ];
     }
 
-    public function when($condition, $value, $default = null)
-    {
-        return $condition ? $value : $default;
-    }
-
 }
