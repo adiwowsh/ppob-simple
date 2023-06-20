@@ -96,4 +96,8 @@ class HomeController extends Controller
             return back()->withErrors(['login' => 'Invalid phone number or password.'])->withInput();
         }
     }
+
+    public function waLanding(Request $request){
+        return view('wa-landing');
+    }
 }

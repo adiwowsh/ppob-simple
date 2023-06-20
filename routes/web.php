@@ -25,3 +25,7 @@ Route::get('/pulsa', [\App\Http\Controllers\HomeController::class, 'productPulsa
 Route::get('/pln-token', [\App\Http\Controllers\HomeController::class, 'productPlnToken']);
 Route::get('/pln-pascabayar', [\App\Http\Controllers\HomeController::class, 'productPlnPascabayar']);
 Route::get('/topup', [\App\Http\Controllers\HomeController::class, 'topup']);
+
+
+
+Route::get('/wa', [\App\Http\Controllers\HomeController::class, 'waLanding']);
