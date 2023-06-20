@@ -58,7 +58,7 @@
 <h1>Mulai bergabung dengan INDO PULSA</h1>
 <p>Agen pulsa termurah seIndonesia, whatsapp CS sekarang</p>
 <a href="https://wa.me/{{ env('CS_WA') }}?text={{ urlencode('Halo kak, saya ingin daftar jadi agen pulsa') }}" target="_blank" class="whatsapp-button">
-    Mulai Chat Sekarang
+    Chat Sekarang
 </a>
 
 <!-- Facebook Pixel Code -->
