@@ -3,6 +3,23 @@
 <head>
     <title>Indo Pulsa</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
         .whatsapp-button {
             display: block;
             width: 180px;
@@ -17,6 +34,23 @@
             border-radius: 30px;
             margin: 0 auto;
             margin-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .whatsapp-button {
+                width: 160px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
