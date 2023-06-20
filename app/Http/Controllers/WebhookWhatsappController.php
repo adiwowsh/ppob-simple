@@ -21,6 +21,7 @@ class WebhookWhatsappController extends Controller
         if($result['status'] AND !empty($result['data']) AND !empty($result['message'])){
             // reply message
             $messageData = $result['data'];
+            $result['message'] = $result['message'] . '/n' . 'Pesan ID ' . time();
             $replyMessage = $this->whatsappService->sendMessage($messageData->phone, 'text', $result['message'], $messageData->reply, $messageData->user_id);
 
             return response()->json($replyMessage);
