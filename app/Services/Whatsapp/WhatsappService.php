@@ -384,7 +384,9 @@ Ketik PLN#NOMINAL#NOMOR_METER
 Ketik PLNBILL#NOMOR_METER
 (contoh PLNBILL#776887998) untuk cek tagihan dan bayar listrik PLN bulanan \n
 Ketik HISTORY
-untuk mengetahui riwayat/history penggunaan saldo Anda"
+untuk mengetahui riwayat/history penggunaan saldo Anda \n
+Jika Anda sudah terdaftar, Anda juga dapat login ke 
+" . url('')
         ];
     }
 
