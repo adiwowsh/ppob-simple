@@ -21,6 +21,9 @@ class WhatsappService{
         $midtrans = new MidtransService();
         // Parsing and Store here
         $data = $this->_parsingAndStoreData($payload);
+        if(empty($data->text)){
+            return false;
+        }
         if(strtolower($data->text) == 'saldo'){
             return $this->_checkBalance($data);
         }
