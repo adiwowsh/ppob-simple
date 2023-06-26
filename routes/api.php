@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/webhook-whatsapp-receive', [\App\Http\Controllers\WebhookWhatsappController::class, 'receiveMessage']);
+
+Route::get('/phone-validator', [\App\Http\Controllers\HomeController::class, 'phoneValidator']);

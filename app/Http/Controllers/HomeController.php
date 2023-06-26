@@ -97,6 +97,12 @@ class HomeController extends Controller
         }
     }
 
+    public function phoneValidator(Request $request){
+        return response()->json([
+            'phone' => $this->phoneService->validatePhone($request->get('phone'))
+        ]);
+    }
+
     public function waLanding(Request $request){
         return view('wa-landing');
     }
