@@ -285,11 +285,11 @@ untuk info command yang dapat kami kerjakan"
         ];
     }
 
-    public function sendMessage($toNumber, $type, $message, $replyUrl = '', $userId = '', $productId = '', $phoneId = ''){
+    public function sendMessage($toNumber, $type, $message, $replyUrl = '', $userId = ''){
         $whatsappRepo = new WebHookWhatsappRepository();
         $client = new Client();
 
-        $url = ($replyUrl ? $replyUrl : env('MAYTAPI_URL') . $productId . '/' . $phoneId);
+        $url = ($replyUrl ? $replyUrl : env('MAYTAPI_URL') . env('MAYTAPI_PRODUCT_ID') . '/' . env('MAYTAPI_PHONE_ID'));
 
         $data = [
             'to_number' => $toNumber,

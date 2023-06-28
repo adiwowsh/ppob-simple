@@ -104,6 +104,64 @@ class HomeController extends Controller
     }
 
     public function waLanding(Request $request){
-        return view('wa-landing');
+        return view('register-landing');
+    }
+
+    public function registerPost(Request $request){
+        $validatedData = $request->validate([
+            'phone' => 'required|numeric',
+            'name' => 'required',
+            'city' => 'required'
+        ], [
+            'phone.required' => 'Silahkan masukan nomor handphone.',
+            'phone.numeric' => 'Harap masukan hanya angka saja.',
+            'name.required' => 'Please enter your name.',
+            'city.required' => 'Please enter your kota.',
+        ]);
+
+        $phone = $this->phoneService->validatePhone($request->get('phone'));
+        $name = $request->get('name');
+        $city = $request->get('city');
+
+        $length = 10; // Length of the random string
+        $randomString = base64_encode(random_bytes($length));
+        $email = $randomString . '@gmail.com';
+
+        $password = mt_rand(1000, 9999);
+        $user = $this->userRepo->findUserByPhone($phone);
+        if(!$user){
+            $user = $this->userRepo->create($email, $phone, $name, $password, $city);
+            $message = "Agen Yth
+Pendaftaran Anda SUKSES.
+Selamat bergabung dengan " . env('BRAND_NAME') . "\n 
+Nomor akun Anda " . $user->phone . "
+PIN/Password Anda " . $password . "
+Saldo Rp" . number_format($user->balance, 0) . " \n
+Untuk pertolongan ketik HELP
+Customer service hub. 
+" . env('CS_WA');
+
+            $this->whatsappService->sendMessage($phone, 'text', $message);
+
+            $credentials = [
+                'phone' => $phone,
+                'password' => $password
+            ];
+
+
+            if (Auth::attempt($credentials)) {
+                // Authentication passed
+                return redirect()->intended('/register-success');
+            } else {
+                // Invalid user or password
+                return back()->withErrors(['register' => 'Invalid phone number or name or city.'])->withInput();
+            }
+        }
+
+        return back()->withErrors(['register' => 'Akun Anda sudah terdaftar, silahkan cek WA untuk info login atau hubungi CS ' . env('CS_WA')])->withInput();
+    }
+
+    public function registerSUccess(Request $request){
+        return view('register-success');
     }
 }

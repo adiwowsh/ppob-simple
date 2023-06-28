@@ -29,3 +29,5 @@ Route::get('/topup', [\App\Http\Controllers\HomeController::class, 'topup']);
 
 
 Route::get('/wa', [\App\Http\Controllers\HomeController::class, 'waLanding']);
+Route::post('/register-post', [\App\Http\Controllers\HomeController::class, 'registerPost']);
+Route::get('/register-success', [\App\Http\Controllers\HomeController::class, 'registerSuccess']);
